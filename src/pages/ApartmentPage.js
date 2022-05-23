@@ -46,7 +46,7 @@ const ApartmentPage = () => {
                         className="mt-2 p-2"
                         onClick={() => setAmountVisible(true)}
                     >
-                        Внести деньги инвестора</Button>
+                        Внести деньги инвестора!!</Button>
                 </Col>
             </Row>
             <CreateAmount show={amountVisible} onHide={() => setAmountVisible(false)}/>
