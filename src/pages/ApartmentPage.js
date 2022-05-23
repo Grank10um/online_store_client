@@ -28,10 +28,25 @@ const ApartmentPage = () => {
                     <Button
                         variant={"outline-dark"}
                         className="mt-4 p-2"
+                        size="sm"
                         onClick={() => setAmountVisible(true)}
                     >
                         Внести расходы
                     </Button>
+                    <Button
+                        variant={"outline-dark"}
+                        size="sm"
+                        className="mt-2 p-2"
+                        onClick={() => setAmountVisible(true)}
+                    >
+                        На продажу</Button>
+                    <Button
+                        variant={"outline-dark"}
+                        size="sm"
+                        className="mt-2 p-2"
+                        onClick={() => setAmountVisible(true)}
+                    >
+                        Внести деньги инвестора</Button>
                 </Col>
             </Row>
             <CreateAmount show={amountVisible} onHide={() => setAmountVisible(false)}/>

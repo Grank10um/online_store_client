@@ -31,6 +31,7 @@ const Apartment = observer(() => {
                         onClick={() => setApartmentVisible(true)}
                     >
                         Добавить квартиру</Button>
+
                     <Row>
                         <ApartmentList/>
                     </Row>

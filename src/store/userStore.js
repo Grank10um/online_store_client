@@ -13,11 +13,11 @@ export default class UserStore {
     }
 
     setUser(user) {
-        this._user=user
+        this._users=user
     }
 
     setSelectedUser(user) {
-        this._selectedUser = user
+        this._selectedUsers = user
     }
 
     get isAuth(){

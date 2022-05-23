@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Modal from "react-bootstrap/Modal";
-import {Button, Container, Dropdown, Form, Row} from "react-bootstrap";
+import {Button, Dropdown, Form} from "react-bootstrap";
 import {fetchApartments, createAmount, fetchAmounts} from "../../http/apartmentApi";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
