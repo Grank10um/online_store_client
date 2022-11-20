@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Typebar from '../components/Typebar'
 import { Container, Row, Col, Button} from 'react-bootstrap';
-import { observer } from 'mobx-react-lite';
+import {observer} from "mobx-react-lite";
 import ApartmentList from '../components/ApartmentList';
 import { Context } from '../index';
 import { fetchApartments } from '../http/apartmentApi';

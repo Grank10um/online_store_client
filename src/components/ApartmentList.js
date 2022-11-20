@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import { Row } from 'react-bootstrap';
 import { Context } from '../index';
 import ApartmentItem from './ApartmentItem';

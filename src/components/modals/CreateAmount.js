@@ -1,34 +1,28 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Modal from "react-bootstrap/Modal";
 import {Button, Dropdown, Form} from "react-bootstrap";
-import {fetchApartments, createAmount, fetchAmounts} from "../../http/apartmentApi";
+import {createAmount} from "../../http/valuationApi";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
-import {fetchCustomers} from "../../http/userApi";
+import {fetchUsers} from "../../http/userApi";
 import {useParams} from "react-router-dom";
 
 
 const CreateAmount = observer(({show, onHide}) => {
-    const {device} = useContext(Context)
+    const {device, logins} = useContext(Context)
     const [amount, setAmount] = useState(0)
     const [info, setInfo] = useState('')
     const {id} = useParams()
     const addAmount = () => {
-        createAmount(device.selectedWorkType.id,
-                    amount,
-                    info ,
-                    id,
-                    device.selectedCustomer.id).then(data => {
-                        setAmount(0)
-                        setInfo('')
-            device.selectedCustomer.id=null
-             onHide()})
+        createAmount(device.selectedWorkType.id,amount,info, id, logins.selectedUser.id).then(data => {
+            setAmount(0)
+            setInfo('')
+            onHide()})
     }
 
-useEffect(()=>{
-    fetchApartments().then(data=> device.setApartments(data))
-    fetchCustomers().then(data=>device.setCustomers(data))
-}, [])
+    useEffect(()=>{
+        fetchUsers().then(data=>logins.setUser(data))
+    }, [])
 
     const ShowHideCustomers = () => {
         let customerShowHide=document.getElementById('customersChoice')
@@ -36,7 +30,6 @@ useEffect(()=>{
             customerShowHide.hidden=false
         }else {
             customerShowHide.hidden=true
-            device.selectedCustomer.id=null
         }
     }
 
@@ -53,19 +46,6 @@ useEffect(()=>{
             </Modal.Header>
             <Modal.Body>
                 <Form>
-                    <Dropdown id="dropdownChoise" className="mt-2 mb-2">
-                        <Dropdown.Toggle>{device.selectedApartment.ap_adress || "Выберите квартиру"}</Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {device.apartments.map(apartment =>
-                                <Dropdown.Item
-                                    onClick={() => device.setSelectedApartment(apartment)}
-                                    key={apartment.id}
-                                >
-                                    {apartment.ap_adress}
-                                </Dropdown.Item>
-                            )}
-                        </Dropdown.Menu>
-                    </Dropdown>
                     <Form.Control
                         value={amount}
                         onChange={e => setAmount(e.target.value)}
@@ -94,16 +74,17 @@ useEffect(()=>{
                         type="switch"
                         id="custom-switch"
                         label="Собственные стредства?"
+
                     />
                     <Dropdown id="customersChoice" className="mt-2 mb-2"  hidden={true}>
-                        <Dropdown.Toggle>{device.selectedCustomer.cus_name || "Кто покупал"}</Dropdown.Toggle>
+                        <Dropdown.Toggle>{logins.selectedUser.id ? logins.selectedUser.email : "Кто покупал"}</Dropdown.Toggle>
                         <Dropdown.Menu>
-                            {device.customers.map(customers =>
+                            {logins.user.map(customers =>
                                 <Dropdown.Item
-                                    onClick={() => device.setSelectedCustomer(customers)}
-                                    key={customers.id}
+                                    onClick={() => logins.setSelectedUser(customers)}
+                                    key={customers.email}
                                 >
-                                    {customers.cus_name}
+                                    {customers.email}
                                 </Dropdown.Item>
                             )}
                         </Dropdown.Menu>

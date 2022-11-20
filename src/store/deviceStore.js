@@ -16,10 +16,11 @@ export default class DeviceStore {
             {id: 3, name: 'Мебель'},
             {id: 4, name: 'Работы'},
             {id: 5, name: 'Работы outsource'},
-            {id: 6, name: 'Прочиее'}
+            {id: 6, name: 'Прочее'}
         ]
         this._brands = []
         this._apartments = []
+        this._amounts = []
         this._statuses = [
             {id: 1, status_name: 'Материалы'},
             {id: 2, status_name: 'Техника'},
@@ -30,6 +31,7 @@ export default class DeviceStore {
         this._selectedBrand={}
         this._selectedType={}
         this._selectedApartment={}
+        this._selectedAmount={}
         this._selectedWorkType={}
         this._selectedCustomer={}
         makeAutoObservable(this)
@@ -43,6 +45,9 @@ export default class DeviceStore {
     }
     setApartments(apartments) {
         this._apartments = apartments
+    }
+    setAmounts(amounts) {
+        this._amounts = amounts
     }
     setStatuses(statuses) {
         this._statuses= statuses
@@ -64,6 +69,9 @@ export default class DeviceStore {
     setSelectedApartment(apartment) {
         this._selectedApartment = apartment
     }
+    setSelectedAmount(amount) {
+        this._selectedAmount = amount
+    }
     setSelectedStatus(status) {
         this._selectedStatus = status
     }
@@ -84,6 +92,9 @@ export default class DeviceStore {
     get apartments() {
         return this._apartments
     }
+    get amounts() {
+        return this._amounts
+    }
     get statuses() {
         return this._statuses
     }
@@ -97,6 +108,9 @@ export default class DeviceStore {
 
     get selectedApartment() {
         return this._selectedApartment
+    }
+    get selectedAmount() {
+        return this._selectedAmount
     }
     get selectedBrand() {
         return this._selectedBrand
