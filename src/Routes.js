@@ -20,22 +20,10 @@ export const authRoutes = [  //страницы, к которым только 
     {
         path: ADMIN_ROUTE,
         Component: Admin
-    }
-
-]
-
-export const publicRoutes = [
+    },
     {
         path: APARTMENT_ROUTE,
         Component: Apartment
-    },
-    {
-        path: LOGIN_ROUTE,
-        Component: Auth
-    },
-    {
-        path: REGISTRATION_ROUTE,
-        Component: Auth
     },
     {
         path: SHOP_ROUTE,
@@ -67,4 +55,17 @@ export const publicRoutes = [
         Component: ApartmentPage
     }
 
+
+]
+
+export const publicRoutes = [
+
+    {
+        path: LOGIN_ROUTE,
+        Component: Auth
+    },
+    {
+        path: REGISTRATION_ROUTE,
+        Component: Auth
+    }
 ]
